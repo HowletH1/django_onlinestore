@@ -1,0 +1,23 @@
+{% extends 'catalog/base.html' %}
+{% load tags %}
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">{{ object.title }}</h1>
+</div>
+<div class="card mb-4 box-shadow">
+    <div class="card-body">
+        {{ object.content }}
+    </div>
+    <div class="card-footer">
+        Просмотры: {{ object.views_count }}
+    </div>
+        <div class="card-footer">
+        slug: {{ object.slug }}
+    </div>
+        <div class="card-footer">
+        active: {{ object.is_published }}
+    <div>
+    </div>
+</div>
+</div>
+{% endblock %}
