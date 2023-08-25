@@ -14,6 +14,7 @@ class BlogCreate(CreateView):
         if form.is_valid():
             new_mat = form.save()
             new_mat.slug = slugify(new_mat.title)
+            new_mat.save()
 
         return super().form_valid(form)
 
@@ -27,6 +28,7 @@ class BlogUpdate(UpdateView):
         if form.is_valid():
             new_mat = form.save()
             new_mat.slug = slugify(new_mat.title)
+            new_mat.save()
 
         return super().form_valid(form)
 
