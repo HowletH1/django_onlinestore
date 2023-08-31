@@ -1,0 +1,37 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+    <style>
+    #map-container {
+        width: 200%;
+        height: 100vh;
+    }
+    </style>
+<div id="map-container">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-6">
+                                    <h2>Детали продукта</h2>
+                                    {{ form.as_p }}
+                                </div>
+                                <div class="col-6">
+                                    <h2>Версии</h2>
+                                    {{ formset.management_form }}
+                                    {% for form in formset %}
+                                        {{ form.as_table }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <button type="submit">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

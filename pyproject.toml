@@ -12,6 +12,7 @@ psycopg2-binary = "^2.9.6"
 ipython = "^8.14.0"
 pillow = "^10.0.0"
 pytils = "^0.4.1"
+slugify = "^0.0.1"
 
 
 [build-system]

@@ -1,13 +1,18 @@
 {% extends 'catalog/base.html' %}
 {% load tags %}
 {% block content %}
+    <div class="col-12 mb-5">
+    <a class="btn btn-outline-primary" href="{% url 'catalog:product_create' %}">Добавить продукт</a>
+    </div>
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h1 class="display-4">{{ title }}</h1>
     </div>
 
     <div class="container">
         <div class="row text-center">
-            {% for object in object_list %}
+            {% for form in formset %}
+                {% for object in object_list %}
+                    {% if form.product == object and form.current_version == True %}
                 <div class="col-3">
                     <div class="card mb-4 box-shadow">
                         <div class="card-header">
@@ -22,7 +27,18 @@
                             </ul>
                             <p><a class="btn btn-secondary" href="{% url 'catalog:product' object.pk %}"
                                   role="button">Подробнеe
-                                &raquo;</a></p>
+                                </a></p>
+                            <p><a class="btn btn-secondary" href="{% url 'catalog:product_update' object.pk %}"
+                                  role="button">Изменить
+                                </a></p>
+                            <a href="{% url 'catalog:product_delete' object.pk %}" type="button"
+                            class="btn btn-sm btn-outline-secondary">Delete</a>
+                        </div>
+                        <div class="card-footer text-muted">
+
+
+                            {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
